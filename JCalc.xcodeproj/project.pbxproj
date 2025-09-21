@@ -50,27 +50,32 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A3123C9E2E80B94500785AA7 /* Exceptions for "JCalc" folder in "JCalcTest" target */ = {
+		A3123CAA2E80BDC700785AA7 /* Exceptions for "src" folder in "JCalcTest" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				src/calculator.cpp,
+				calculator.cpp,
 			);
 			target = A3123C892E80A70000785AA7 /* JCalcTest */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A3123C7E2E80A21800785AA7 /* JCalc */ = {
+		A3123C8B2E80A70000785AA7 /* test */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A3123C9E2E80B94500785AA7 /* Exceptions for "JCalc" folder in "JCalcTest" target */,
-			);
-			path = JCalc;
+			path = test;
 			sourceTree = "<group>";
 		};
-		A3123C8B2E80A70000785AA7 /* JCalcTest */ = {
+		A3123CA32E80BDC300785AA7 /* include */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JCalcTest;
+			path = include;
+			sourceTree = "<group>";
+		};
+		A3123CA62E80BDC700785AA7 /* src */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A3123CAA2E80BDC700785AA7 /* Exceptions for "src" folder in "JCalcTest" target */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -97,8 +102,9 @@
 		A3123C732E80A21800785AA7 = {
 			isa = PBXGroup;
 			children = (
-				A3123C7E2E80A21800785AA7 /* JCalc */,
-				A3123C8B2E80A70000785AA7 /* JCalcTest */,
+				A3123CA32E80BDC300785AA7 /* include */,
+				A3123CA62E80BDC700785AA7 /* src */,
+				A3123C8B2E80A70000785AA7 /* test */,
 				A3123C912E80A77500785AA7 /* Frameworks */,
 				A3123C7D2E80A21800785AA7 /* Products */,
 			);
@@ -137,7 +143,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A3123C7E2E80A21800785AA7 /* JCalc */,
+				A3123CA32E80BDC300785AA7 /* include */,
+				A3123CA62E80BDC700785AA7 /* src */,
 			);
 			name = JCalc;
 			packageProductDependencies = (
@@ -160,7 +167,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A3123C8B2E80A70000785AA7 /* JCalcTest */,
+				A3123C8B2E80A70000785AA7 /* test */,
 			);
 			name = JCalcTest;
 			packageProductDependencies = (
