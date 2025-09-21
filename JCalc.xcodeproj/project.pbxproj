@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A3123C9F2E80BB6500785AA7 /* libboost_unit_test_framework.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A3123C922E80A77500785AA7 /* libboost_unit_test_framework.dylib */; };
+		A3123CA02E80BB6500785AA7 /* libboost_unit_test_framework.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = A3123C922E80A77500785AA7 /* libboost_unit_test_framework.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		A3123C7A2E80A21800785AA7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -16,16 +21,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		A3123C882E80A70000785AA7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		A3123CA12E80BB6600785AA7 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A3123CA02E80BB6500785AA7 /* libboost_unit_test_framework.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A3123C7C2E80A21800785AA7 /* JCalc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JCalc; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3123C8A2E80A70000785AA7 /* JCalcTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JCalcTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3123C922E80A77500785AA7 /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = ../../../../../../../usr/local/Cellar/boost/1.89.0/lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A3123C9E2E80B94500785AA7 /* Exceptions for "JCalc" folder in "JCalcTest" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				src/calculator.cpp,
+			);
+			target = A3123C892E80A70000785AA7 /* JCalcTest */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A3123C7E2E80A21800785AA7 /* JCalc */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A3123C9E2E80B94500785AA7 /* Exceptions for "JCalc" folder in "JCalcTest" target */,
+			);
 			path = JCalc;
+			sourceTree = "<group>";
+		};
+		A3123C8B2E80A70000785AA7 /* JCalcTest */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = JCalcTest;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -38,6 +83,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A3123C872E80A70000785AA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3123C9F2E80BB6500785AA7 /* libboost_unit_test_framework.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -45,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				A3123C7E2E80A21800785AA7 /* JCalc */,
+				A3123C8B2E80A70000785AA7 /* JCalcTest */,
+				A3123C912E80A77500785AA7 /* Frameworks */,
 				A3123C7D2E80A21800785AA7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,8 +108,17 @@
 			isa = PBXGroup;
 			children = (
 				A3123C7C2E80A21800785AA7 /* JCalc */,
+				A3123C8A2E80A70000785AA7 /* JCalcTest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A3123C912E80A77500785AA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3123C922E80A77500785AA7 /* libboost_unit_test_framework.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +146,29 @@
 			productReference = A3123C7C2E80A21800785AA7 /* JCalc */;
 			productType = "com.apple.product-type.tool";
 		};
+		A3123C892E80A70000785AA7 /* JCalcTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3123C8E2E80A70000785AA7 /* Build configuration list for PBXNativeTarget "JCalcTest" */;
+			buildPhases = (
+				A3123C862E80A70000785AA7 /* Sources */,
+				A3123C872E80A70000785AA7 /* Frameworks */,
+				A3123C882E80A70000785AA7 /* CopyFiles */,
+				A3123CA12E80BB6600785AA7 /* Embed Libraries */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A3123C8B2E80A70000785AA7 /* JCalcTest */,
+			);
+			name = JCalcTest;
+			packageProductDependencies = (
+			);
+			productName = JCalcTest;
+			productReference = A3123C8A2E80A70000785AA7 /* JCalcTest */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -92,6 +179,9 @@
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					A3123C7B2E80A21800785AA7 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					A3123C892E80A70000785AA7 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
@@ -111,12 +201,20 @@
 			projectRoot = "";
 			targets = (
 				A3123C7B2E80A21800785AA7 /* JCalc */,
+				A3123C892E80A70000785AA7 /* JCalcTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A3123C782E80A21800785AA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3123C862E80A70000785AA7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -263,6 +361,38 @@
 			};
 			name = Release;
 		};
+		A3123C8F2E80A70000785AA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XMA8796MK5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/,
+					/usr/local/Cellar/boost/1.89.0/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = /usr/local/include;
+			};
+			name = Debug;
+		};
+		A3123C902E80A70000785AA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XMA8796MK5;
+				ENABLE_HARDENED_RUNTIME = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/,
+					/usr/local/Cellar/boost/1.89.0/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYSTEM_HEADER_SEARCH_PATHS = /usr/local/include;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -280,6 +410,15 @@
 			buildConfigurations = (
 				A3123C842E80A21800785AA7 /* Debug */,
 				A3123C852E80A21800785AA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3123C8E2E80A70000785AA7 /* Build configuration list for PBXNativeTarget "JCalcTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3123C8F2E80A70000785AA7 /* Debug */,
+				A3123C902E80A70000785AA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
