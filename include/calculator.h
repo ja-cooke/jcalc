@@ -15,6 +15,4 @@ public:
   int exit();
 };
 
-int start();
-
 #endif /* calculator_h */
