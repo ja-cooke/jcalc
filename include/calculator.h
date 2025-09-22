@@ -8,11 +8,29 @@
 #ifndef calculator_h
 #define calculator_h
 
-class Calculator {
+namespace jcalc {
 
+enum mode {
+  ADD,
+  SUBTRACT,
+  MULTIPLY,
+  DIVIDE,
+  NONE
+};
+
+class Calculator {
+  
+  int currentValue;
+  enum mode currentMode;
+  
 public:
   int start();
   int exit();
+  
+  // Getters
+  mode getMode();
 };
+
+}
 
 #endif /* calculator_h */

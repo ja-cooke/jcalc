@@ -12,7 +12,7 @@ int main(int argc, const char * argv[]) {
   // Check compilation
   std::cout << "Starting JCalc...\n";
   
-  Calculator calculator;
+  jcalc::Calculator calculator;
   
   calculator.start();
   calculator.exit();
