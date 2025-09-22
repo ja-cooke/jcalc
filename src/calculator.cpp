@@ -12,6 +12,9 @@
 namespace jcalc {
 
 int Calculator::start(){
+  // Always set the mode to NONE on startup
+  currentMode = NONE;
+  
   return 0;
 };
 
