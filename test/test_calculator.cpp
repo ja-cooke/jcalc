@@ -4,15 +4,17 @@
 //
 //  Created by Jonathan Cooke on 23/09/2025.
 //
+// Unit tests for calculator.cpp
 
 #include <boost/test/unit_test.hpp>
 #include "calculator.h"
 
+// Test fixture to construct and destroy an instance of the Calculator class
+// with the default startup settings.
 struct CalculatorCleanStartupF {
   CalculatorCleanStartupF() : calculator(std::make_unique<jcalc::Calculator>())
   {
     BOOST_TEST_MESSAGE( "setup fixture" );
-    calculator->start();
   }
   
   ~CalculatorCleanStartupF()
@@ -28,36 +30,27 @@ struct CalculatorCleanStartupF {
     std::unique_ptr<jcalc::Calculator> calculator;
 };
 
-
+// All unit tests for calculator.cpp
 BOOST_AUTO_TEST_SUITE(calculator);
 
-BOOST_AUTO_TEST_CASE(start_test)
-{
-  int i = 1;
-  jcalc::Calculator calculator;
-  i = calculator.start();
-  
-  BOOST_TEST(i == 0);
-}
-
-BOOST_AUTO_TEST_CASE(exit_test)
-{
-  int i = 1;
-  jcalc::Calculator calculator;
-  calculator.start();
-  
-  i = calculator.exit();
-  
-  BOOST_TEST(i == 0);
-}
-
-BOOST_FIXTURE_TEST_CASE(startup_mode_test, CalculatorCleanStartupF)
+BOOST_FIXTURE_TEST_CASE(startup_test, CalculatorCleanStartupF)
 {
   jcalc::mode mode;
   mode = this->operator->()->getMode();
   
   BOOST_TEST(mode == jcalc::NONE);
 }
+
+BOOST_AUTO_TEST_CASE(exit_test)
+{
+  int i = 1;
+  jcalc::Calculator calculator;
+  
+  i = calculator.exit();
+  
+  BOOST_TEST(i == 0);
+}
+
 
 BOOST_FIXTURE_TEST_CASE(receive_input_test, CalculatorCleanStartupF)
 {
