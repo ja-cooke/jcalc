@@ -21,3 +21,6 @@ Dependancies:
 | 3 | Multiply two integers together | See the resulting product |
 | 4 | Divide one integer by another | See the resulting quotient |
 
+**Design:**
+
+![Control Flow](assets/ControlFlow.png)
