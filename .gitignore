@@ -1,1 +1,5 @@
-JCalc.xcodeproj
+# macOS system files
+.DS_Store
+
+# Xcode workspace settings
+JCalc.xcodeproj/
