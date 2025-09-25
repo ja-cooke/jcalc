@@ -8,6 +8,8 @@
 #ifndef calculator_h
 #define calculator_h
 
+#include <string>
+
 namespace jcalc {
 
 enum mode {
@@ -26,9 +28,13 @@ class Calculator {
 public:
   int start();
   int exit();
+  int input(std::string& input_string);
   
-  // Getters
+  // Getters & Setters
   mode getMode();
+  
+private:
+  int maxCharacterLength = 19;
 };
 
 }
