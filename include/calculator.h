@@ -31,14 +31,25 @@ public:
   Calculator();
   int exit();
   int input(std::string& input_string);
+  void print(std::string& output_string);
   
   // Getters & Setters
   mode getMode();
+  int getCurrentValue();
   
 private:
-  int currentValue;
-  enum mode currentMode;
+  int currentValue = 0;
+  int inputValue = 0;
+  enum mode currentMode = NONE;
   int maxCharacterLength = 19;
+  
+  void update(std::string& input_string);
+  void add(int& currentValue, int& inputValue);
+  void subtract(int& currentValue, int& inputValue);
+  void multiply(int& currentValue, int& inputValue);
+  void divide(int& currentValue, int& inputValue);
+  void clear();
+  void calculate();
 };
 
 }

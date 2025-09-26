@@ -159,4 +159,65 @@ BOOST_FIXTURE_TEST_CASE(accept_operators_input_test, CalculatorCleanStartupF)
   BOOST_TEST(input_accepted);
 }
 
+BOOST_FIXTURE_TEST_CASE(zero_test, CalculatorCleanStartupF)
+{
+  int currentValue = 1;
+  currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 0);
+}
+
+BOOST_FIXTURE_TEST_CASE(addition_input_test, CalculatorCleanStartupF)
+{
+  std::string input_string_1 = "1";
+  std::string input_string_2 = "+";
+  std::string input_string_3 = "1";
+  
+  this->operator->()->input(input_string_1);
+  this->operator->()->input(input_string_2);
+  this->operator->()->input(input_string_3);
+  
+  int currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 2);
+}
+
+BOOST_FIXTURE_TEST_CASE(addition_string_test, CalculatorCleanStartupF)
+{
+  std::string input_string = "10 + 10";
+  
+  this->operator->()->input(input_string);
+  
+  int currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 20);
+}
+
+BOOST_FIXTURE_TEST_CASE(subtract_input_test, CalculatorCleanStartupF)
+{
+  std::string input_string_1 = "2";
+  std::string input_string_2 = "-";
+  std::string input_string_3 = "1";
+  
+  this->operator->()->input(input_string_1);
+  this->operator->()->input(input_string_2);
+  this->operator->()->input(input_string_3);
+  
+  int currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 1);
+}
+
+BOOST_FIXTURE_TEST_CASE(substract_string_test, CalculatorCleanStartupF)
+{
+  std::string input_string = "20 - 10";
+  
+  this->operator->()->input(input_string);
+  
+  int currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 10);
+}
+
+
 BOOST_AUTO_TEST_SUITE_END();
