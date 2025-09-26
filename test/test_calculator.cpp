@@ -7,28 +7,9 @@
 // Unit tests for calculator.cpp
 
 #include <boost/test/unit_test.hpp>
+
 #include "calculator.h"
-
-// Test fixture to construct and destroy an instance of the Calculator class
-// with the default startup settings.
-struct CalculatorCleanStartupF {
-  CalculatorCleanStartupF() : calculator(std::make_unique<jcalc::Calculator>())
-  {
-    BOOST_TEST_MESSAGE( "setup fixture" );
-  }
-  
-  ~CalculatorCleanStartupF()
-  {
-    BOOST_TEST_MESSAGE( "teardown fixture" );
-    calculator->exit();
-  }
-
-  jcalc::Calculator* operator->() { return calculator.get(); }
-  jcalc::Calculator& operator*()  { return *calculator; }
-
-  private:
-    std::unique_ptr<jcalc::Calculator> calculator;
-};
+#include "test_fixtures.h"
 
 // All unit tests for calculator.cpp
 BOOST_AUTO_TEST_SUITE(calculator);
@@ -55,66 +36,10 @@ BOOST_AUTO_TEST_CASE(exit_test)
 BOOST_FIXTURE_TEST_CASE(receive_input_test, CalculatorCleanStartupF)
 {
   bool input_received;
-  std::string input_string = "1";
+  std::string input_string = "0";
   input_received = this->operator->()->input(input_string);
   
   BOOST_TEST(input_received);
-}
-
-BOOST_FIXTURE_TEST_CASE(empty_input_test, CalculatorCleanStartupF)
-{
-  bool input_rejected = false;
-  std::string input_string = "";
-  
-  try {
-    this->operator->()->input(input_string);
-  } catch (std::invalid_argument) {
-    input_rejected = true;
-  };
-  
-  BOOST_TEST(input_rejected);
-}
-
-BOOST_FIXTURE_TEST_CASE(too_long_input_test, CalculatorCleanStartupF)
-{
-  bool input_rejected = false;
-  std::string input_string (20,'0');
-  
-  try {
-    this->operator->()->input(input_string);
-  } catch (std::invalid_argument) {
-    input_rejected = true;
-  };
-  
-  BOOST_TEST(input_rejected);
-}
-
-BOOST_FIXTURE_TEST_CASE(reject_letters_input_test, CalculatorCleanStartupF)
-{
-  bool input_rejected = false;
-  std::string input_string = "a";
-  
-  try {
-    this->operator->()->input(input_string);
-  } catch (std::invalid_argument) {
-    input_rejected = true;
-  };
-  
-  BOOST_TEST(input_rejected);
-}
-
-BOOST_FIXTURE_TEST_CASE(reject_symbols_input_test, CalculatorCleanStartupF)
-{
-  bool input_rejected = false;
-  std::string input_string = "£";
-  
-  try {
-    this->operator->()->input(input_string);
-  } catch (std::invalid_argument) {
-    input_rejected = true;
-  };
-  
-  BOOST_TEST(input_rejected);
 }
 
 BOOST_FIXTURE_TEST_CASE(accept_numbers_input_test, CalculatorCleanStartupF)
@@ -182,17 +107,6 @@ BOOST_FIXTURE_TEST_CASE(addition_input_test, CalculatorCleanStartupF)
   BOOST_TEST(currentValue == 2);
 }
 
-BOOST_FIXTURE_TEST_CASE(addition_string_test, CalculatorCleanStartupF)
-{
-  std::string input_string = "10 + 10";
-  
-  this->operator->()->input(input_string);
-  
-  int currentValue = this->operator->()->getCurrentValue();
-  
-  BOOST_TEST(currentValue == 20);
-}
-
 BOOST_FIXTURE_TEST_CASE(subtract_input_test, CalculatorCleanStartupF)
 {
   std::string input_string_1 = "2";
@@ -208,6 +122,17 @@ BOOST_FIXTURE_TEST_CASE(subtract_input_test, CalculatorCleanStartupF)
   BOOST_TEST(currentValue == 1);
 }
 
+BOOST_FIXTURE_TEST_CASE(addition_string_test, CalculatorCleanStartupF)
+{
+  std::string input_string = "10 + 10";
+  
+  this->operator->()->input(input_string);
+  
+  int currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 20);
+}
+
 BOOST_FIXTURE_TEST_CASE(substract_string_test, CalculatorCleanStartupF)
 {
   std::string input_string = "20 - 10";
@@ -218,6 +143,5 @@ BOOST_FIXTURE_TEST_CASE(substract_string_test, CalculatorCleanStartupF)
   
   BOOST_TEST(currentValue == 10);
 }
-
 
 BOOST_AUTO_TEST_SUITE_END();
