@@ -79,7 +79,11 @@ void splitInputString(std::string& input_string,
   // Then splits further wherever the sting changes between digits and
   // operators.
   while (std::getline(stringstream, substring, delimiter)) {
-    bool prevIsDigit = substring[0];
+    // Force the first character to be a breakpoint.
+    // I.e. if substring[0] is a digit, assume the previous character was not
+    // and visa versa.
+    bool prevIsDigit = !std::isdigit(substring[0]);
+    // Variables to track substring indices
     int index = 0;
     int element_start = 0;
     int element_stop = 0;
