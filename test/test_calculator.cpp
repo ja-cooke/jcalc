@@ -133,6 +133,17 @@ BOOST_FIXTURE_TEST_CASE(addition_string_test, CalculatorCleanStartupF)
   BOOST_TEST(currentValue == 20);
 }
 
+BOOST_FIXTURE_TEST_CASE(addition_string_no_spaces_test, CalculatorCleanStartupF)
+{
+  std::string input_string = "10+10";
+  
+  this->operator->()->input(input_string);
+  
+  int currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 20);
+}
+
 BOOST_FIXTURE_TEST_CASE(substract_string_test, CalculatorCleanStartupF)
 {
   std::string input_string = "20 - 10";
@@ -142,6 +153,41 @@ BOOST_FIXTURE_TEST_CASE(substract_string_test, CalculatorCleanStartupF)
   int currentValue = this->operator->()->getCurrentValue();
   
   BOOST_TEST(currentValue == 10);
+}
+
+BOOST_FIXTURE_TEST_CASE(substract_string_no_spaces_test, CalculatorCleanStartupF)
+{
+  std::string input_string = "20-10";
+  
+  this->operator->()->input(input_string);
+  
+  int currentValue = this->operator->()->getCurrentValue();
+  
+  BOOST_TEST(currentValue == 10);
+}
+
+BOOST_FIXTURE_TEST_CASE(user_input_test, CalculatorDummyCinF)
+{
+  int currentValue = 0;
+  
+  std::istringstream dummyStream("10+10");
+  std::cin.rdbuf(dummyStream.rdbuf()); // Dummy cin stream
+  
+  this->operator->()->read();
+  currentValue = this->operator->()->getCurrentValue();
+  BOOST_TEST(currentValue == 20);
+}
+
+BOOST_FIXTURE_TEST_CASE(user_input_long_test, CalculatorDummyCinF)
+{
+  int currentValue = 0;
+  
+  std::istringstream dummyStream("1+2+3+4+5");
+  std::cin.rdbuf(dummyStream.rdbuf()); // Dummy cin stream
+  
+  this->operator->()->read();
+  currentValue = this->operator->()->getCurrentValue();
+  BOOST_TEST(currentValue == 15);
 }
 
 BOOST_AUTO_TEST_SUITE_END();

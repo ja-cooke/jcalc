@@ -35,6 +35,7 @@ public:
   int exit();
   bool input(std::string& input_string);
   void print(std::string& output_string);
+  void read();
   
   // Getters & Setters
   mode getMode();

@@ -7,6 +7,7 @@
 // All calculator program functions should be runnable using the Calculator
 // class and jcalc namespace alone.
 
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -21,7 +22,6 @@ Calculator::Calculator(){
   // Always set the mode to NONE on startup
   currentMode = NONE;
   currentValue = 0;
-
 }
 
 // Terminates the program
@@ -66,44 +66,10 @@ void Calculator::calculate() {
   }
 }
 
-// TODO
-// Put this into a seperate class (InputParser) and write unit tests for it
-void splitInputString(std::string& input_string,
-                      std::vector<std::string>& output_substrings) {
-  
-  std::stringstream stringstream(input_string);
-  std::string substring;
-  char delimiter = ' ';
-  
-  // Splits strings into substrings wherever a space character occurs
-  // Then splits further wherever the sting changes between digits and
-  // operators.
-  while (std::getline(stringstream, substring, delimiter)) {
-    // Force the first character to be a breakpoint.
-    // I.e. if substring[0] is a digit, assume the previous character was not
-    // and visa versa.
-    bool prevIsDigit = !std::isdigit(substring[0]);
-    // Variables to track substring indices
-    int index = 0;
-    int element_start = 0;
-    int element_stop = 0;
-    std::string string_element = "";
-    
-    // If the current character is not the same type as the previous (i.e.
-    // numeral or maths operator) split the string there and add to the
-    // vector of substrings.
-    for (char c : substring) {
-      if (std::isdigit(c) != prevIsDigit) {
-        element_stop = index - 1;
-        
-        string_element = substring.substr(element_start, element_stop);
-        output_substrings.push_back(string_element);
-        
-        element_start = index;
-      }
-      index++;
-    }
-  }
+void Calculator::read(){
+  std::string input_string;
+  std::cin >> input_string;
+  input(input_string);
 }
 
 // Change the state of the calculator depending on the input type
@@ -111,7 +77,7 @@ void Calculator::update(std::string& input_string) {
   
   // First split the string into individual operations
   std::vector<std::string> input_substrings;
-  splitInputString(input_string, input_substrings);
+  inputParser.splitInputString(input_string, input_substrings);
   
   // Execute the individual operations in turn
   for (std::string s : input_substrings) {

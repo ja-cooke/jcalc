@@ -31,6 +31,30 @@ private:
   std::unique_ptr<jcalc::Calculator> calculator;
 };
 
+// Test fixture to construct and destroy an instance of the Calculator class
+// with the default settings, and redirect cin to read a dummy input stream.
+struct CalculatorDummyCinF {
+  CalculatorDummyCinF() : calculator(std::make_unique<jcalc::Calculator>())
+  {
+    BOOST_TEST_MESSAGE( "setup fixture" );
+    defaultCin = std::cin.rdbuf(); // Store default buffer
+  }
+  
+  ~CalculatorDummyCinF()
+  {
+    BOOST_TEST_MESSAGE( "teardown fixture" );
+    calculator->exit();
+    std::cin.rdbuf(defaultCin); // Restore default buffer
+  }
+
+  jcalc::Calculator* operator->() { return calculator.get(); }
+  jcalc::Calculator& operator*()  { return *calculator; }
+
+private:
+  std::unique_ptr<jcalc::Calculator> calculator;
+  std::streambuf* defaultCin;
+};
+
 struct InputParserF {
   InputParserF() : inputParser(std::make_unique<jcalc::InputParser>())
   {
