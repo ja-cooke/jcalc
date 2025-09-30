@@ -8,6 +8,7 @@
 // To run the unit tests, the entry point is "test/test.cpp".
 
 #include <iostream>
+
 #include "calculator.h"
 
 int main(int argc, const char * argv[]) {
@@ -17,6 +18,12 @@ int main(int argc, const char * argv[]) {
   std::cout << "Starting JCalc...\n";
   
   jcalc::Calculator calculator;
+  
+  for (int i=0; i<10; i++) {
+    calculator.read();
+    calculator.print();
+  }
+  
   calculator.exit();
   
   return 0;

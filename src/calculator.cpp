@@ -66,6 +66,10 @@ void Calculator::calculate() {
   }
 }
 
+void Calculator::print(){
+  std::cout << currentValue << std::endl;
+}
+
 void Calculator::read(){
   std::string input_string;
   std::cin >> input_string;

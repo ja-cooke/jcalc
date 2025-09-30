@@ -34,7 +34,7 @@ public:
   Calculator();
   int exit();
   bool input(std::string& input_string);
-  void print(std::string& output_string);
+  void print();
   void read();
   
   // Getters & Setters

@@ -170,10 +170,12 @@ BOOST_FIXTURE_TEST_CASE(user_input_test, CalculatorDummyCinF)
 {
   int currentValue = 0;
   
-  std::istringstream dummyStream("10+10");
-  std::cin.rdbuf(dummyStream.rdbuf()); // Dummy cin stream
+  std::istringstream dummyStream("10+10\n");
+  {
+    CinRedirectHelper guard(dummyStream.rdbuf());
+    this->operator->()->read();
+  }
   
-  this->operator->()->read();
   currentValue = this->operator->()->getCurrentValue();
   BOOST_TEST(currentValue == 20);
 }
@@ -182,12 +184,26 @@ BOOST_FIXTURE_TEST_CASE(user_input_long_test, CalculatorDummyCinF)
 {
   int currentValue = 0;
   
-  std::istringstream dummyStream("1+2+3+4+5");
-  std::cin.rdbuf(dummyStream.rdbuf()); // Dummy cin stream
+  std::istringstream dummyStream("1+2+3+4+5\n");
+  {
+    CinRedirectHelper guard(dummyStream.rdbuf());
+    this->operator->()->read();
+  }
   
-  this->operator->()->read();
   currentValue = this->operator->()->getCurrentValue();
   BOOST_TEST(currentValue == 15);
+}
+
+BOOST_FIXTURE_TEST_CASE(print_test, CalculatorDummyCoutF)
+{
+  std::ostringstream dummyStream;
+  {
+    CoutRedirectHelper guard(dummyStream);
+    this->operator->()->print();
+  }
+  std::string output_string = dummyStream.str();
+  
+  BOOST_TEST(output_string == "0\n");
 }
 
 BOOST_AUTO_TEST_SUITE_END();
