@@ -22,20 +22,18 @@ void InputParser::stringValid(std::string& inputString,
   }
 }
 
-bool InputParser::charactersInvalid(std::string& inputString){
+void InputParser::charactersInvalid(std::string& inputString){
   
   // Allowed characters are arabic numerals 0-9, '+', '-' and ' '.
-  bool invalidCharacters = false;
   for (char c : inputString) {
-    if (std::isdigit(c) || c == '+' || c == '-' || c == ' ') {
+    if (std::isdigit(c) ||
+        c == '+' || c == '-' || c == '*' || c == '/' || c == ' ') {
       continue;
     }
     else {
-      invalidCharacters = true;
       throw std::invalid_argument("Invalid input character");
     }
   }
-  return invalidCharacters;
 }
 
 // Splits a string of digits, and non-digit character types sequentially into a

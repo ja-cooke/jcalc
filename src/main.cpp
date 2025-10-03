@@ -18,13 +18,7 @@ int main(int argc, const char * argv[]) {
   std::cout << "Starting JCalc...\n";
   
   jcalc::Calculator calculator;
-  
-  for (int i=0; i<10; i++) {
-    calculator.read();
-    calculator.print();
-  }
-  
-  calculator.exit();
+  calculator.run();
   
   return 0;
 }

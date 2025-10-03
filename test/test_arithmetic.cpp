@@ -15,6 +15,7 @@
 // All unit tests for arithmetic.cpp
 BOOST_AUTO_TEST_SUITE(arithmetic);
 
+// 1+1 returns 2, input cleared to 0
 BOOST_FIXTURE_TEST_CASE(addition_test, ArithmeticF)
 {
   unsigned int testInt1 = 1;
@@ -25,6 +26,7 @@ BOOST_FIXTURE_TEST_CASE(addition_test, ArithmeticF)
   BOOST_TEST(testInt2 == 0);
 }
 
+// 2-1 returns 1, input cleared to 0
 BOOST_FIXTURE_TEST_CASE(subtraction_test, ArithmeticF)
 {
   unsigned int testInt1 = 2;
@@ -35,6 +37,7 @@ BOOST_FIXTURE_TEST_CASE(subtraction_test, ArithmeticF)
   BOOST_TEST(testInt2 == 0);
 }
 
+// 20*10 returns 200, input cleared to 0
 BOOST_FIXTURE_TEST_CASE(multiplication_test, ArithmeticF)
 {
   unsigned int testInt1 = 20;
@@ -45,6 +48,7 @@ BOOST_FIXTURE_TEST_CASE(multiplication_test, ArithmeticF)
   BOOST_TEST(testInt2 == 0);
 }
 
+// 200/10 returns 20, input cleared to 0
 BOOST_FIXTURE_TEST_CASE(division_test, ArithmeticF)
 {
   unsigned int testInt1 = 200;

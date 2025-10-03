@@ -32,6 +32,7 @@ class Calculator {
   
 public:
   Calculator();
+  void run();
   int exit();
   bool input(std::string& input_string);
   void print();
@@ -46,6 +47,7 @@ private:
   unsigned int inputValue = 0;
   enum mode currentMode = None;
   int maxCharacterLength = 19;
+  bool exitCalled = false;
   
   jcalc::InputParser inputParser;
   jcalc::Arithmetic arithmetic;

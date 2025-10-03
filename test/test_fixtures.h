@@ -10,6 +10,10 @@
 
 #include "calculator.h"
 
+// -----------------------------------------------------------------------------
+// --------------------------- test_calculator ---------------------------------
+// -----------------------------------------------------------------------------
+
 // Test fixture to construct and destroy an instance of the Calculator class
 // with the default startup settings.
 struct CalculatorCleanStartupF {
@@ -101,6 +105,10 @@ private:
   std::streambuf* defaultCout;
 };
 
+// -----------------------------------------------------------------------------
+// --------------------------- test_input_parser -------------------------------
+// -----------------------------------------------------------------------------
+
 struct InputParserF {
   InputParserF() : inputParser(std::make_unique<jcalc::InputParser>())
   {
@@ -120,6 +128,10 @@ private:
 public:
   int maxCharacterLength = 19;
 };
+
+// -----------------------------------------------------------------------------
+// --------------------------- test_arithmetic ---------------------------------
+// -----------------------------------------------------------------------------
 
 struct ArithmeticF {
   ArithmeticF() : arithmetic(std::make_unique<jcalc::Arithmetic>())

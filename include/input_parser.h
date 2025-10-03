@@ -16,7 +16,7 @@ namespace jcalc {
 class InputParser {
 public:
   void stringValid(std::string& inputString, int maxCharacterLength);
-  bool charactersInvalid(std::string& inputString);
+  void charactersInvalid(std::string& inputString);
   void splitInputString(std::string& inputString,
                         std::vector<std::string>& outputSubstrings);
 };

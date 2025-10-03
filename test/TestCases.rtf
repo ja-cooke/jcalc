@@ -51,9 +51,9 @@ test_calculator\
 {\listtext	
 \f1 \uc0\u10003 
 \f0 	}accept_spaces_input_test		-> true returned when input() receives " "\
-{\listtext	
-\f1 \uc0\u10003 
-\f0 	}accept_operators_input_test	-> true returned when input() receives "+-"\
+\ls5\ilvl0
+\f1 {\listtext	\uc0\u10003 	}
+\f0 accept_operators_input_test	-> true returned when input() receives supported operator character strings\
 {\listtext	
 \f1 \uc0\u10003 
 \f0 	}zero_test				-> currentValue is initialised to 0 on construction of Calculator\
@@ -88,7 +88,7 @@ test_calculator\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4120\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
 \ls8\ilvl0\cf0 {\listtext	
 \f1 \uc0\u10003 
-\f0 	}print_test	-> Print result to console "0" on startup\
+\f0 	}print_test				-> Print result to console "0" on startup\
 \pard\tx560\tx1440\tx2160\tx2880\tx3600\tx4120\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4120\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
@@ -117,7 +117,13 @@ input_parser\
 \f0 	}split_string_test 			-> String "1 + 1" split into \{"1", "+", "1"\}\
 {\listtext	
 \f1 \uc0\u10003 
+\f0 	}split_string_2_test			-> String "10 + 10" split into \{"10", "+", "10"\}\
+{\listtext	
+\f1 \uc0\u10003 
 \f0 	}split_string_no_spaces_test 	-> String "1+1" split into \{"1", "+", "1"\}\
+{\listtext	
+\f1 \uc0\u10003 
+\f0 	}split_string_2_no_spaces_test 	-> String "10+10" split into \{"10", "+", "10"\}\
 \pard\tx560\tx1440\tx2160\tx2880\tx3600\tx4120\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
 arithmetic\

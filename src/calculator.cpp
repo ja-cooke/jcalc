@@ -26,6 +26,7 @@ Calculator::Calculator(){
 
 // Terminates the program
 int Calculator::exit(){
+  exitCalled = true;
   return 0;
 }
 
@@ -34,17 +35,26 @@ bool Calculator::input(std::string& inputString){
   
   try {
     inputParser.stringValid(inputString, maxCharacterLength);
-  } catch (std::invalid_argument) {
+  }
+  catch (std::invalid_argument) {
     throw std::invalid_argument("Input string invalid");
   }
   
-  if (inputParser.charactersInvalid(inputString)) {
-    return false;
+  try {
+    inputParser.charactersInvalid(inputString);
   }
-  else{
-    update(inputString);
-    return true;
+  catch (std::invalid_argument) {
+    if (inputString.find("exit") != std::string::npos) {
+      exit();
+      return true;
+    }
+    else {
+      return false;
+    }
   }
+  
+  update(inputString);
+  return true;
 }
 
 // Uses the current mode and input to call a calculation function.
@@ -71,9 +81,19 @@ void Calculator::print(){
 }
 
 void Calculator::read(){
+  std::cout << "> ";
   std::string inputString;
   std::cin >> inputString;
   input(inputString);
+}
+
+void Calculator::run(){
+  std::cout << "Welcome to JCalc!" << std::endl;
+  do {
+    print();
+    read();
+  } while (!exitCalled);
+  std::cout << "Shutting down calculator." << std::endl;
 }
 
 // Change the state of the calculator depending on the input type
