@@ -12,21 +12,21 @@
 
 namespace jcalc {
 
-void InputParser::stringValid(std::string& input_string,
+void InputParser::stringValid(std::string& inputString,
                               int maxCharacterLength) {
-  if (input_string.empty()) {
+  if (inputString.empty()) {
     throw std::invalid_argument("Empty input received");
   }
-  if (input_string.length() > maxCharacterLength) {
+  if (inputString.length() > maxCharacterLength) {
     throw std::invalid_argument("Input too long");
   }
 }
 
-bool InputParser::charactersInvalid(std::string& input_string){
+bool InputParser::charactersInvalid(std::string& inputString){
   
   // Allowed characters are arabic numerals 0-9, '+', '-' and ' '.
   bool invalidCharacters = false;
-  for (char c : input_string) {
+  for (char c : inputString) {
     if (std::isdigit(c) || c == '+' || c == '-' || c == ' ') {
       continue;
     }
@@ -41,10 +41,10 @@ bool InputParser::charactersInvalid(std::string& input_string){
 // Splits a string of digits, and non-digit character types sequentially into a
 // vector of substrings of one type only. Also delimits using spaces.
 // E.g. "qwert1234 5678yuio asdf" -> {"qwert","1234","5678","yuio","asdf"}
-void InputParser::splitInputString(std::string& input_string,
-                      std::vector<std::string>& output_substrings) {
+void InputParser::splitInputString(std::string& inputString,
+                      std::vector<std::string>& outputSubstrings) {
   
-  std::stringstream stringstream(input_string);
+  std::stringstream stringstream(inputString);
   std::string substring;
   char delimiter = ' ';
   
@@ -71,7 +71,7 @@ void InputParser::splitInputString(std::string& input_string,
         int length = element_stop - element_start;
         
         std::string string_element = substring.substr(element_start, length);
-        output_substrings.push_back(string_element);
+        outputSubstrings.push_back(string_element);
         
         // Starting index of the next element:
         element_start = index;
@@ -82,7 +82,7 @@ void InputParser::splitInputString(std::string& input_string,
         element_stop = ++index; // == substring.length(): the end of the string
         int length = element_stop - element_start;
         std::string string_element = substring.substr(element_start, length);
-        output_substrings.push_back(string_element);
+        outputSubstrings.push_back(string_element);
         break; // Process complete: no need to set up for the next loop.
       }
       index++;

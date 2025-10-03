@@ -19,11 +19,11 @@ namespace jcalc {
 
 // Calculator modes representing possible mathematical operations
 enum mode {
-  ADD,
-  SUBTRACT,
-  MULTIPLY,
-  DIVIDE,
-  NONE // For use on startup before the user choses a mode.
+  Add,
+  Subtract,
+  Multiply,
+  Divide,
+  None // For use on startup before the user choses a mode.
 };
 
 // Simple calculator which can accept mathematical arguments from user console
@@ -44,7 +44,7 @@ public:
 private:
   unsigned int currentValue = 0;
   unsigned int inputValue = 0;
-  enum mode currentMode = NONE;
+  enum mode currentMode = None;
   int maxCharacterLength = 19;
   
   jcalc::InputParser inputParser;
